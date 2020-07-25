@@ -44,7 +44,7 @@ category = {
     'backend': ['redis', 'solr', 'factlog'],
 
     # Roles with unique communication patterns
-    'utility': ['jenkins', 'gateway', 'puppetmaster'],
+    'utility': ['jenkins', 'gateway', 'puppetmain'],
 
     # Roles that talk to no one
     'isolated': ['gaming', 'testrunner', 'drawquest_testrunner'],
@@ -57,7 +57,7 @@ def get_role_size(role):
         'redis': 'm1.large',
         'gateway': 't1.micro',
         'sentry': 't1.micro',
-        'puppetmaster': 't1.micro',
+        'puppetmain': 't1.micro',
         'web': 'c1.medium',
         'drawquest_web': 'c1.medium',
         'testrunner': 'c1.medium',

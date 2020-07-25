@@ -88,12 +88,12 @@ Config = {
     'fact_host': '%s:9999' % ('ip-10-12-99-188.ec2.internal' if PRODUCTION else '127.0.0.1'),
     'drawquest_fact_host': '%s:9999' % ('ip-10-34-102-100.ec2.internal' if PRODUCTION else '127.0.0.1'),
 
-    # Master.
+    # Main.
     'redis_host': 'ip-10-84-89-110.ec2.internal' if PRODUCTION else 'localhost',
-    'redis_slave': 'ip-10-218-7-231.ec2.internal' if PRODUCTION else None,
+    'redis_subordinate': 'ip-10-218-7-231.ec2.internal' if PRODUCTION else None,
 
     'drawquest_redis_host': 'ip-10-83-142-11.ec2.internal' if PRODUCTION else 'localhost',
-    'drawquest_redis_slave': 'ip-10-203-46-105.ec2.internal' if PRODUCTION else None,
+    'drawquest_redis_subordinate': 'ip-10-203-46-105.ec2.internal' if PRODUCTION else None,
 
     'memcache_hosts': ['cache_0.example.com:11211', 'cache_1.example.com:11211'] if PRODUCTION else ['127.0.0.1:11211'],
     'drawquest_memcache_hosts': [
@@ -111,7 +111,7 @@ Config = {
 
 _load_config = lambda path: Config.update(json.load(open(path)))
 
-assert Config['redis_host'] != Config['redis_slave'], 'sanity check, you probably forgot to update the standby!'
+assert Config['redis_host'] != Config['redis_subordinate'], 'sanity check, you probably forgot to update the standby!'
 
 # Load the AWS credentials for the box.
 if os.path.exists(AWS_CREDENTIALS_PATH):
